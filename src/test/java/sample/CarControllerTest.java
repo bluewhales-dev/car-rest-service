@@ -50,7 +50,7 @@ public class CarControllerTest {
 
     @Test
     public void ParamPostCarShouldReturnDefaultCar() throws Exception {
-        MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap();
+        MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<>();
         multiValueMap.add("name", "Leaf");
         multiValueMap.add("color", "Red");
         multiValueMap.add("engineSize", "1000");
