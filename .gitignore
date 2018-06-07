@@ -21,6 +21,7 @@
 
 target/
 build/
+.gradle/
 bin/
 .settings/
 .project
