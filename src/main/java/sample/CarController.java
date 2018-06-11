@@ -1,9 +1,7 @@
 package sample;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import netscape.javascript.JSObject;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,10 +14,11 @@ public class CarController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(value = "/car", method = RequestMethod.GET)
-    public Car getNewCar(@RequestParam(value = "name", defaultValue = "Vitz") String name) {
+    public Car getNewCar(@RequestParam(value = "name", defaultValue = "Vitz") String name,
+                         @RequestHeader (value = "color", defaultValue = "Red")String color) {
         Random random = new Random();
         int size = random.ints(8, (18 + 1)).findFirst().getAsInt() * 1000;
-        return new Car(String.format(getTemplate, name), counter.incrementAndGet(), size, "Red");
+        return new Car(String.format(getTemplate, name), counter.incrementAndGet(), size, color);
     }
 
     @RequestMapping(value = "/car", method = RequestMethod.POST)
